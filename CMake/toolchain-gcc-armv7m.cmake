@@ -1,0 +1,27 @@
+message("ARM GCC toolchain here from the top here")
+
+set(CMAKE_SYSTEM_NAME  Generic)
+set(CMAKE_SYSTEM_PROCESSOR ARM)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(compiler_path_prefix ${CMAKE_SOURCE_DIR}/../Tools/arm-gnu-toolchain-13.2.Rel1-mingw-w64-i686-arm-none-eabi)
+
+set(toolchain_bin_path ${compiler_path_prefix}/bin)
+
+set(CMAKE_C_COMPILER ${toolchain_bin_path}/arm-none-eabi-gcc.exe CACHE FILEPATH "ARM C compiler (GCC)")
+set(CMAKE_CXX_COMPILER ${toolchain_bin_path}/arm-none-eabi-g++.exe CACHE FILEPATH "ARM C++ compiler (GCC)")
+set(CMAKE_ASM_COMPILER ${toolchain_bin_path}/arm-none-eabi-gcc.exe CACHE INTERNAL "ARM Assembler (GCC)")
+set(CMAKE_SIZE ${toolchain_bin_path}/arm-none-eabi-size.exe CACHE INTERNAL "Binutils size (GCC)")
+
+set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
+
+set(architecture_flags "-march=armv7e-m -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard")
+set(exception_flags "-fno-exceptions")
+
+set(CMAKE_C_FLAGS           "${architecture_flags} -gdwarf-4 -gstrict-dwarf -g3                           -fsingle-precision-constant -ffunction-sections -fdata-sections -Wall") 
+set(CMAKE_CXX_FLAGS         "${architecture_flags} -gdwarf-4 -gstrict-dwarf -g3 ${exception_flags} -fno-rtti -fsingle-precision-constant -ffunction-sections -fdata-sections -Wall") 
+set(CMAKE_EXE_LINKER_FLAGS  "${architecture_flags} -nostartfiles -Wl,--no-warn-rwx-segments,--script=${CMAKE_SOURCE_DIR}/Devices/STM32_RAM.ld,-n,--gc-sections -nostdlib -nodefaultlibs ${exception_flags} -fno-rtti --specs=nano.specs") 
+
+#--no-warn-rwx-segments https://www.redhat.com/en/blog/linkers-warnings-about-executable-stacks-and-segments

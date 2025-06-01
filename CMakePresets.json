@@ -1,0 +1,82 @@
+{
+  "version": 6,
+  "configurePresets":
+  [
+    {
+      "name": "base",
+      "hidden": true,
+      "description": "Common configuration properties (hidden, won't be displayed in IDE, can not be selected as standalone config)",
+      "binaryDir": "${sourceParentDir}/${sourceDirName}-bin-${presetName}"
+    },
+    {
+      "name": "base-Arm-Baremetal",
+      "hidden": true,
+      "inherits": "base",
+      "description": "Path to compiler",
+      "generator": "Ninja",
+      "cacheVariables":
+      {
+        "PROTOMORPH_TARGET_PLATFORM": "PROTOMORPH_FOR_BAREMETAL",
+        "PROTOMORPH_CROSS_COMPILE": true,
+        "CMAKE_CXX_STANDARD": "20"
+      },
+      "environment":
+      {
+        "ARM_NONE_EABI_GCC": "${sourceDir}/../Tools/arm-gnu-toolchain-13.2.Rel1-mingw-w64-i686-arm-none-eabi"
+      },
+      "vendor":
+      {
+        "microsoft.com/VisualStudioSettings/CMake/1.0":
+        {
+          "hostOS": "Windows",
+          "intelliSenseOptions":
+          {
+            "useCompilerDefaults": false,
+            "additionalCompilerArgs": "-std:c++20"
+          }
+        }
+      }
+    },
+    {
+      "name": "ARMv7M-fromWin-debug",
+      "inherits": "base-Arm-Baremetal",
+      "cacheVariables":
+      {
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/CMake/toolchain-gcc-armv7m.cmake",
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "ARMv7M-fromWin-release",
+      "inherits": "ARMv7M-fromWin-debug",
+      "cacheVariables":
+      {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+      }
+    },
+    {
+      "name": "RPiPico-fromWin-debug",
+      "inherits": "base-Arm-Baremetal",
+      "cacheVariables":
+      {
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/CMake/toolchain-gcc-RPiPico.cmake",
+        "CMAKE_BUILD_TYPE": "Debug"
+      },
+      "environment":
+      {
+        "PICO_SDK_PATH": "${sourceDir}/../externals/pico-sdk"
+      }
+    },
+    {
+      "name": "RPiPico-fromWin-release",
+      "inherits": "RPiPico-fromWin-debug",
+      "cacheVariables":
+      {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+      }
+    }
+  ],
+  "buildPresets":
+  [
+  ]
+}
