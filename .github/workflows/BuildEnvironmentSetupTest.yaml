@@ -1,0 +1,17 @@
+name: "Build environment setup test"
+on: [push]
+
+jobs:
+  RPi:
+    name: Setup build environment on Raspberry Pi
+    runs-on: [self-hosted, RPi4Too, BareMetalCppTemplate]
+
+    steps:
+    - name: Say hello
+      run: |
+        echo "Hello"
+        gcc --version
+        which gcc
+        lsb_release -a
+        cat /etc/os-release
+        hostnamectl
