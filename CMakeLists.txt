@@ -17,19 +17,6 @@ pico_sdk_init()
 
 #set(CMAKE_VERBOSE_MAKEFILE ON)
 
-# Provide path for Protomorph lib to find platofrm.h
-list(APPEND ProtmorphLibPlatformIncludePaths
-          "${CMAKE_CURRENT_SOURCE_DIR}/Project"
-      )
-
-# Local varible with Protomorh lib root
-#set(PTMH_CHECKOUT_PATH "../Protomorph/head")
-get_filename_component(PTMH_CHECKOUT_PATH "../Protomorph/head" ABSOLUTE)
-
-include("${PTMH_CHECKOUT_PATH}/CMake/Protomorph.cmake")
-
-# Add the Protomorh lib sources
-add_subdirectory ("${PTMH_CHECKOUT_PATH}/Protomorph" "Protomorph")
 add_subdirectory ("Project")
 add_subdirectory ("HollowPi")
 

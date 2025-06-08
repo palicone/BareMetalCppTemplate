@@ -5,18 +5,11 @@ cmake_minimum_required (VERSION 3.10)
 
 message("Bare metal template from the top here")
 
-parc_gen(TestDemoEndpoint
-  "${PTMH_CHECKOUT_PATH}/Protomorph/PARC/Gen/Test/Test_One.h"
-  "${PTMH_CHECKOUT_PATH}/Protomorph/PARC/Gen/Test/Test_Too.h"
-  "${PTMH_CHECKOUT_PATH}/Protomorph/PARC/Gen/Test/Test_The.h"
-)
-
 add_executable(
   Template
   EXCLUDE_FROM_ALL
   main.cpp
-  "${CMAKE_CURRENT_SOURCE_DIR}/TestDemoEndpointBase.h"
- "Test.cpp" "platform.h")
+ )
 
  target_include_directories(
   Template
@@ -24,7 +17,6 @@ add_executable(
 )
 
 target_link_libraries(Template
-  PRIVATE Protomorph
   gcc
   nosys
   stdc++_nano

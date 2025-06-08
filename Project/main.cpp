@@ -2,7 +2,6 @@
 #include <vector>
 #include <cstdint>
 #include <stdio.h>
-#include "TestDemoEndpointBase.h"
 
 extern unsigned long _estack, _sidata, _sdata, _edata, _sbss, _ebss, RAM_USAGE;
 typedef void (*pCtor)(void);
@@ -15,8 +14,6 @@ extern "C"
   void* __dso_handle __attribute__ ((__weak__));
   void _fini(){}
 }
-
-typedef unsigned long DWORD;
 
 int g_nCounter0 = 0;
 int g_nCounter1 = 1;
@@ -80,8 +77,8 @@ int g_nCnt;
 
 float floatTezt()
 {
-  DWORD *pdwCPACR = (DWORD *)0xE000ED88;
-  DWORD dwCPACR = *pdwCPACR;
+  uint32_t *pdwCPACR = (uint32_t*)0xE000ED88;
+  uint32_t dwCPACR = *pdwCPACR;
   dwCPACR |= 0x00F00000;
   *pdwCPACR = dwCPACR;
   float fA = 1.1;
@@ -103,11 +100,6 @@ std::vector<unsigned int> Fibonaccis(size_t nCount)
 }
 
 void Test();
-
-class CTestDemoEndpointImpl : public CTestDemoEndpointBase
-{
-
-}g_PARCNode;
 
 int main(int argc, char** argv)
 {
@@ -147,21 +139,19 @@ int main(int argc, char** argv)
   
   while ( 1 )
   {
-    Test();
     increaseCounters();
     void *pData = malloc(4);
     g_nCnt++;
     if ( g_nCnt & 1 )
     {
       nFib = Fibonacci(CTest::Count());
-      asm(" NOP");     
-      //asm(" VADD S1,S2,S3");     
+      asm(" NOP");
+      //asm(" VADD S1,S2,S3");
     }
     nFib = Fibonacci(9);
     free(pData);
     asm(" NOP");
 
-    g_PARCNode.Dispatch("", "", nullptr);
   }
 }
 

@@ -3,7 +3,7 @@ message("ARM GCC toolchain here from the top here")
 set(CMAKE_SYSTEM_NAME  Generic)
 set(CMAKE_SYSTEM_PROCESSOR ARM)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(compiler_path_prefix ${CMAKE_SOURCE_DIR}/../Tools/arm-gnu-toolchain-13.2.Rel1-mingw-w64-i686-arm-none-eabi)
@@ -23,5 +23,11 @@ set(exception_flags "-fno-exceptions")
 set(CMAKE_C_FLAGS           "${architecture_flags} -gdwarf-4 -gstrict-dwarf -g3                           -fsingle-precision-constant -ffunction-sections -fdata-sections -Wall") 
 set(CMAKE_CXX_FLAGS         "${architecture_flags} -gdwarf-4 -gstrict-dwarf -g3 ${exception_flags} -fno-rtti -fsingle-precision-constant -ffunction-sections -fdata-sections -Wall") 
 set(CMAKE_EXE_LINKER_FLAGS  "${architecture_flags} -nostartfiles -Wl,--no-warn-rwx-segments,--script=${CMAKE_SOURCE_DIR}/Devices/STM32_RAM.ld,-n,--gc-sections -nostdlib -nodefaultlibs ${exception_flags} -fno-rtti --specs=nano.specs") 
+
+
+add_link_options(
+  -Wl,-Map=$<TARGET_PROPERTY:ARCHIVE_OUTPUT_DIRECTORY>.map
+  -Wl,--print-memory-usage
+)
 
 #--no-warn-rwx-segments https://www.redhat.com/en/blog/linkers-warnings-about-executable-stacks-and-segments

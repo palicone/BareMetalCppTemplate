@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 3.28)
 
 add_executable(hollow_pi EXCLUDE_FROM_ALL
-    hollow_pi.c
+    "hollow_pi.cpp"
 )
 
 # Add pico_stdlib library which aggregates commonly used features
