@@ -1,0 +1,16 @@
+{
+  "version": 6,
+  "configurePresets":
+  [
+    {
+      "name": "base",
+      "hidden": true,
+      "description": "Common configuration properties (hidden, won't be displayed in IDE, can not be selected as standalone config)",
+      "binaryDir": "${sourceParentDir}/${sourceDirName}-bin-${presetName}",
+      "cacheVariables":
+      {
+        "CMAKE_CXX_STANDARD": "23"
+      }
+    }
+  ]
+}

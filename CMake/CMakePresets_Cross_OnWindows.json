@@ -1,0 +1,76 @@
+{
+  "version": 6,
+  "include":
+  [
+    "CMakePresets_Cross_Common.json"
+  ],
+  "configurePresets":
+  [
+    {
+      "name": "base-fromWin",
+      "inherits": "base",
+      "hidden": true,
+      "description": "Compiler tools, build tools and configuration related to Windows (hidden, won't be displayed in IDE, can not be selected as standalone config)",
+      "environment":
+      {
+        "ARM_NONE_EABI_GCC": "${sourceDir}/../../Tools/arm-gnu-toolchain-13.2.Rel1-mingw-w64-i686-arm-none-eabi"
+      },
+      "cacheVariables":
+      {
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/CMake/toolchain-gcc-armv7m.cmake"
+      },
+      "vendor":
+      {
+        "microsoft.com/VisualStudioSettings/CMake/1.0":
+        {
+          "hostOS": "Windows",
+          "intelliSenseOptions":
+          {
+            "useCompilerDefaults": false,
+            "additionalCompilerArgs": "-std:c++23"
+          }
+        }
+      }
+    },
+    {
+      "name": "ARMv7M-fromWin-debug",
+      "inherits": "base-fromWin",
+      "cacheVariables":
+      {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "ARMv7M-fromWin-release",
+      "inherits": "ARMv7M-fromWin-debug",
+      "cacheVariables":
+      {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+      }
+    },
+    {
+      "name": "RPiPico-fromWin-debug",
+      "inherits": "base-fromWin",
+      "environment":
+      {
+        "PICO_SDK_PATH": "${sourceDir}/../../externals/pico-sdk"
+      },
+      "cacheVariables":
+      {
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/CMake/toolchain-gcc-RPiPico.cmake",
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "RPiPico-fromWin-release",
+      "inherits": "RPiPico-fromWin-debug",
+      "cacheVariables":
+      {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+      }
+    }
+  ],
+  "buildPresets":
+  [
+  ]
+}
