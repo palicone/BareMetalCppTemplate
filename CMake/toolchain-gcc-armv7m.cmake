@@ -6,7 +6,7 @@ set(CMAKE_SYSTEM_PROCESSOR ARM)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(compiler_path_prefix ${CMAKE_SOURCE_DIR}/../Tools/arm-gnu-toolchain-13.2.Rel1-mingw-w64-i686-arm-none-eabi)
+set(compiler_path_prefix $ENV{ARM_NONE_EABI_GCC})
 
 set(toolchain_bin_path ${compiler_path_prefix}/bin)
 

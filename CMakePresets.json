@@ -20,8 +20,8 @@
       },
       "environment":
       {
-        "ARM_NONE_EABI_GCC": "${sourceDir}/../Tools/arm-gnu-toolchain-13.2.Rel1-mingw-w64-i686-arm-none-eabi",
-        "PICO_SDK_PATH": "${sourceDir}/../externals/pico-sdk"
+        "ARM_NONE_EABI_GCC": "${sourceDir}/../../Tools/arm-gnu-toolchain-13.2.Rel1-mingw-w64-i686-arm-none-eabi",
+        "PICO_SDK_PATH": "${sourceDir}/../../externals/pico-sdk"
       },
       "vendor":
       {
