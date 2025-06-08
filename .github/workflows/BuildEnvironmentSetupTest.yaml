@@ -21,3 +21,8 @@ jobs:
       with:
         path: repo/head
 
+    - name: Prepare build environment
+      working-directory: ${{github.workspace}}/repo/head
+      run: |
+        bash PrepareEnvironmentRPi.sh
+

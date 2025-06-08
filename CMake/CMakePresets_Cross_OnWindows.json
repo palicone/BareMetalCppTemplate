@@ -10,7 +10,7 @@
       "name": "base-fromWin",
       "inherits": "base",
       "hidden": true,
-      "description": "Compiler tools, build tools and configuration related to Windows (hidden, won't be displayed in IDE, can not be selected as standalone config)",
+      "description": "Compiler tools, build tools and configuration relevant on Windows host (hidden, won't be displayed in IDE, can not be selected as standalone config)",
       "environment":
       {
         "ARM_NONE_EABI_GCC": "${sourceDir}/../../Tools/arm-gnu-toolchain-13.2.Rel1-mingw-w64-i686-arm-none-eabi"
@@ -18,6 +18,12 @@
       "cacheVariables":
       {
         "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/CMake/toolchain-gcc-armv7m.cmake"
+      },
+      "condition":
+      {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
       },
       "vendor":
       {

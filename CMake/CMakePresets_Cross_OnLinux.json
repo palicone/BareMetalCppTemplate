@@ -1,0 +1,88 @@
+{
+  "version": 6,
+  "include":
+  [
+    "CMakePresets_Cross_Common.json"
+  ],
+  "configurePresets":
+  [
+    {
+      "name": "base-fromLinux",
+      "inherits": "base",
+      "hidden": true,
+      "description": "Compiler tools, build tools and configuration relevant on Linux host (hidden, won't be displayed in IDE, can not be selected as standalone config)",
+      "cmakeExecutable": "${sourceDir}/../../tools/cmake/bin/cmake",
+      "environment":
+      {
+        "ARM_NONE_EABI_GCC": "${sourceDir}/../../tools/arm-gnu-toolchain-14.2.rel1-aarch64-arm-none-eabi"
+      },
+      "cacheVariables":
+      {
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/CMake/toolchain-gcc-armv7m.cmake"
+      },
+      "condition":
+      {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      },
+      "vendor":
+      {
+        "microsoft.com/VisualStudioRemoteSettings/CMake/1.0":
+        {
+          "infoSrc": "https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/build/cmake-presets-json-reference.md",
+          "sourceDir": "$env{HOME}/dev/BareMetalCppTemplate/$ms{projectDirName}",
+          "copySourcesOptions":
+          {
+            "exclusionList":
+            [
+              ".vs",
+              ".git",
+              "out"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "ARMv7M-fromLinux-debug",
+      "inherits": "base-fromLinux",
+      "cacheVariables":
+      {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "ARMv7M-fromLinux-release",
+      "inherits": "ARMv7M-fromLinux-debug",
+      "cacheVariables":
+      {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+      }
+    },
+    {
+      "name": "RPiPico-fromLinux-debug",
+      "inherits": "base-fromLinux",
+      "environment":
+      {
+        "PICO_SDK_PATH": "${sourceDir}/../../externals/pico-sdk"
+      },
+      "cacheVariables":
+      {
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/CMake/toolchain-gcc-RPiPico.cmake",
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "RPiPico-fromLinux-release",
+      "inherits": "RPiPico-fromLinux-debug",
+      "cacheVariables":
+      {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+      }
+    }
+  ],
+  "buildPresets":
+  [
+  ]
+}

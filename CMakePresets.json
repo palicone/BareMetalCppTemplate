@@ -2,6 +2,7 @@
     "version": 6,
     "include":
     [
-      "CMake/CMakePresets_Cross_OnWindows.json"
+      "CMake/CMakePresets_Cross_OnWindows.json",
+      "CMake/CMakePresets_Cross_OnLinux.json"
     ]
 }

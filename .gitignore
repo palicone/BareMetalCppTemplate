@@ -33,4 +33,7 @@
 
 *.vs
 
+**/out/
+
 CMakeUserPresets.json
+

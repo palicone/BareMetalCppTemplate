@@ -10,10 +10,10 @@ set(compiler_path_prefix $ENV{ARM_NONE_EABI_GCC})
 
 set(toolchain_bin_path ${compiler_path_prefix}/bin)
 
-set(CMAKE_C_COMPILER ${toolchain_bin_path}/arm-none-eabi-gcc.exe CACHE FILEPATH "ARM C compiler (GCC)")
-set(CMAKE_CXX_COMPILER ${toolchain_bin_path}/arm-none-eabi-g++.exe CACHE FILEPATH "ARM C++ compiler (GCC)")
-set(CMAKE_ASM_COMPILER ${toolchain_bin_path}/arm-none-eabi-gcc.exe CACHE INTERNAL "ARM Assembler (GCC)")
-set(CMAKE_SIZE ${toolchain_bin_path}/arm-none-eabi-size.exe CACHE INTERNAL "Binutils size (GCC)")
+set(CMAKE_C_COMPILER ${toolchain_bin_path}/arm-none-eabi-gcc CACHE FILEPATH "ARM C compiler (GCC)")
+set(CMAKE_CXX_COMPILER ${toolchain_bin_path}/arm-none-eabi-g++ CACHE FILEPATH "ARM C++ compiler (GCC)")
+set(CMAKE_ASM_COMPILER ${toolchain_bin_path}/arm-none-eabi-gcc CACHE INTERNAL "ARM Assembler (GCC)")
+set(CMAKE_SIZE ${toolchain_bin_path}/arm-none-eabi-size CACHE INTERNAL "Binutils size (GCC)")
 
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
