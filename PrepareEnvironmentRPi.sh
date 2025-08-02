@@ -39,7 +39,7 @@ DO_CLEAN=1
 if [ -f "/tmp/$TOOLCHAIN_FILENAME" ]; then
   echo "/tmp/$TOOLCHAIN_FILENAME exists skipping download."
   DO_CLEAN=0
-else
+#else
 # Download the toolchain
 #log_info "Downloading toolchain from $TOOLCHAIN_URL..."
 #wget "$TOOLCHAIN_URL" -O "/tmp/$TOOLCHAIN_FILENAME" || log_error "Failed to download toolchain."
