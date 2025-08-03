@@ -10,8 +10,8 @@ print_usage() {
     echo "> Example: $THIS_PATH python3"
 }
 
-SRC_PYTHON=python
-VENV_PATH="$(realpath "$THIS_FOLDER/../../../tools/bmcpptPyVenv")"
+SRC_PYTHON="/usr/bin/python"
+VENV_PATH="$(realpath --canonicalize-missing "$THIS_FOLDER/../../../tools/bmcpptPyVenv")"
 
 # If argument is passed, use it as Python path
 if [ -n "$1" ]; then
