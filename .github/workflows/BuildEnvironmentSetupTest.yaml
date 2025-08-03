@@ -33,5 +33,5 @@ jobs:
     - name: Prepare build environment
       working-directory: ${{github.workspace}}/repo/head
       run: |
-        bash PrepareEnvironmentRPi.sh
+        bash DevUtils/SetupDevEnv.sh /usr/bin/python
 
