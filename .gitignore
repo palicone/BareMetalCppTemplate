@@ -34,6 +34,7 @@
 *.vs
 
 **/out/
+**/.idea/
 
 CMakeUserPresets.json
 

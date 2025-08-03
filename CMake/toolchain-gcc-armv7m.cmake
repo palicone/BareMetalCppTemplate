@@ -3,17 +3,18 @@ message("ARM GCC toolchain here from the top here")
 set(CMAKE_SYSTEM_NAME  Generic)
 set(CMAKE_SYSTEM_PROCESSOR ARM)
 
+set(ARMV7M_TOOLCHAIN_PATH $ENV{ARM_NONE_EABI_GCC})
+message("ARMV7M_TOOLCHAIN_PATH: ${ARMV7M_TOOLCHAIN_PATH}")
+
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(compiler_path_prefix $ENV{ARM_NONE_EABI_GCC})
+set(toolchain_bin_path ${ARMV7M_TOOLCHAIN_PATH}/bin)
 
-set(toolchain_bin_path ${compiler_path_prefix}/bin)
-
-set(CMAKE_C_COMPILER ${toolchain_bin_path}/arm-none-eabi-gcc CACHE FILEPATH "ARM C compiler (GCC)")
-set(CMAKE_CXX_COMPILER ${toolchain_bin_path}/arm-none-eabi-g++ CACHE FILEPATH "ARM C++ compiler (GCC)")
-set(CMAKE_ASM_COMPILER ${toolchain_bin_path}/arm-none-eabi-gcc CACHE INTERNAL "ARM Assembler (GCC)")
-set(CMAKE_SIZE ${toolchain_bin_path}/arm-none-eabi-size CACHE INTERNAL "Binutils size (GCC)")
+set(CMAKE_C_COMPILER ${toolchain_bin_path}/arm-none-eabi-gcc.exe CACHE FILEPATH "ARM C compiler (GCC)")
+set(CMAKE_CXX_COMPILER ${toolchain_bin_path}/arm-none-eabi-g++.exe CACHE FILEPATH "ARM C++ compiler (GCC)")
+set(CMAKE_ASM_COMPILER ${toolchain_bin_path}/arm-none-eabi-gcc.exe CACHE INTERNAL "ARM Assembler (GCC)")
+set(CMAKE_SIZE ${toolchain_bin_path}/arm-none-eabi-size.exe CACHE INTERNAL "Binutils size (GCC)")
 
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
