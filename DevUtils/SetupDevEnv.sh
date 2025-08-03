@@ -10,7 +10,7 @@ print_usage() {
     echo "> Example: $THIS_PATH python3"
 }
 
-SRC_PYTHON="$(realpath "$THIS_FOLDER/../../../tools/Python/python.exe")"
+SRC_PYTHON=python
 VENV_PATH="$(realpath "$THIS_FOLDER/../../../tools/bmcpptPyVenv")"
 
 # If argument is passed, use it as Python path
