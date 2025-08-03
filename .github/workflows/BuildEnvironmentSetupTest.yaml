@@ -15,7 +15,7 @@ jobs:
     - name: Force clean runner work folder
       run: |
         echo "Cleaning up runner work folder"
-        rm -rf ${{github.workspace}}/*
+        rm -rf ${{github.workspace}}/repo
     - name: Say hello
       run: |
         echo "Hello"
