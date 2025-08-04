@@ -12,6 +12,10 @@
       "hidden": true,
       "description": "Compiler tools, build tools and configuration relevant on Linux host (hidden, won't be displayed in IDE, can not be selected as standalone config)",
       "cmakeExecutable": "${sourceDir}/../../tools/cmake/bin/cmake",
+      "environment":
+      {
+        "ARM_NONE_EABI_GCC": "${sourceDir}/../../tools/arm-gnu-toolchain-14.2.rel1-aarch64-arm-none-eabi"
+      },
       "cacheVariables":
       {
         "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/CMake/toolchain-gcc-armv7m.cmake"
@@ -43,10 +47,6 @@
     {
       "name": "ARMv7M-fromLinux-debug",
       "inherits": "base-fromLinux",
-      "environment":
-      {
-        "ARM_NONE_EABI_GCC": "${sourceDir}/../../tools/arm-gnu-toolchain-14.2.rel1-aarch64-arm-none-eabi"
-      },
       "cacheVariables":
       {
         "CMAKE_BUILD_TYPE": "Debug"
@@ -55,10 +55,6 @@
     {
       "name": "ARMv7M-fromLinux-release",
       "inherits": "ARMv7M-fromLinux-debug",
-      "environment":
-      {
-        "ARM_NONE_EABI_GCC": "${sourceDir}/../../tools/arm-gnu-toolchain-14.2.rel1-aarch64-arm-none-eabi"
-      },
       "cacheVariables":
       {
         "CMAKE_BUILD_TYPE": "RelWithDebInfo"
@@ -69,7 +65,6 @@
       "inherits": "base-fromLinux",
       "environment":
       {
-        "ARM_NONE_EABI_GCC": "${sourceDir}/../../tools/arm-gnu-toolchain-14.2.rel1-aarch64-arm-none-eabi",
         "PICO_SDK_PATH": "${sourceDir}/../../externals/pico-sdk"
       },
       "cacheVariables":
@@ -81,11 +76,6 @@
     {
       "name": "RPiPico-fromLinux-release",
       "inherits": "RPiPico-fromLinux-debug",
-      "environment":
-      {
-        "ARM_NONE_EABI_GCC": "${sourceDir}/../../tools/arm-gnu-toolchain-14.2.rel1-aarch64-arm-none-eabi",
-        "PICO_SDK_PATH": "${sourceDir}/../../externals/pico-sdk"
-      },
       "cacheVariables":
       {
         "CMAKE_BUILD_TYPE": "RelWithDebInfo"

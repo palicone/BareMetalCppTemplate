@@ -11,6 +11,10 @@
       "inherits": "base",
       "hidden": true,
       "description": "Compiler tools, build tools and configuration relevant on Windows host (hidden, won't be displayed in IDE, can not be selected as standalone config)",
+      "environment":
+      {
+        "ARM_NONE_EABI_GCC": "${sourceDir}/../../tools/arm-gnu-toolchain-14.2.rel1-mingw-w64-x86_64-arm-none-eabi"
+      },
       "cacheVariables":
       {
         "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/CMake/toolchain-gcc-armv7m.cmake",
@@ -38,10 +42,6 @@
     {
       "name": "ARMv7M-fromWin-debug",
       "inherits": "base-fromWin",
-      "environment":
-      {
-        "ARM_NONE_EABI_GCC": "${sourceDir}/../../tools/arm-gnu-toolchain-14.2.rel1-mingw-w64-x86_64-arm-none-eabi"
-      },
       "cacheVariables":
       {
         "CMAKE_BUILD_TYPE": "Debug"
@@ -50,10 +50,6 @@
     {
       "name": "ARMv7M-fromWin-release",
       "inherits": "ARMv7M-fromWin-debug",
-      "environment":
-      {
-        "ARM_NONE_EABI_GCC": "${sourceDir}/../../tools/arm-gnu-toolchain-14.2.rel1-mingw-w64-x86_64-arm-none-eabi"
-      },
       "cacheVariables":
       {
         "CMAKE_BUILD_TYPE": "RelWithDebInfo"
@@ -64,7 +60,6 @@
       "inherits": "base-fromWin",
       "environment":
       {
-        "ARM_NONE_EABI_GCC": "${sourceDir}/../../tools/arm-gnu-toolchain-14.2.rel1-mingw-w64-x86_64-arm-none-eabi",
         "PICO_SDK_PATH": "${sourceDir}/../../externals/pico-sdk"
       },
       "cacheVariables":
@@ -76,11 +71,6 @@
     {
       "name": "RPiPico-fromWin-release",
       "inherits": "RPiPico-fromWin-debug",
-      "environment":
-      {
-        "ARM_NONE_EABI_GCC": "${sourceDir}/../../tools/arm-gnu-toolchain-14.2.rel1-mingw-w64-x86_64-arm-none-eabi",
-        "PICO_SDK_PATH": "${sourceDir}/../../externals/pico-sdk"
-      },
       "cacheVariables":
       {
         "CMAKE_BUILD_TYPE": "RelWithDebInfo"
