@@ -6,6 +6,14 @@
     {"id": "arm_none_eabi_gcc", "architectures": ["WindowsX64"],    "action": "download", "params": {"url": "https://developer.arm.com/-/media/Files/downloads/gnu/14.2.rel1/binrel/arm-gnu-toolchain-14.2.rel1-mingw-w64-x86_64-arm-none-eabi.zip"}},
     {"id": "arm_none_eabi_gcc", "architectures": ["LinuxX64"],      "action": "download", "params": {"url": "https://developer.arm.com/-/media/Files/downloads/gnu/14.2.rel1/binrel/arm-gnu-toolchain-14.2.rel1-x86_64-arm-none-eabi.tar.xz"}},
     {"id": "arm_none_eabi_gcc", "architectures": ["LinuxAArch64"],  "action": "download", "params": {"url": "https://developer.arm.com/-/media/Files/downloads/gnu/14.2.rel1/binrel/arm-gnu-toolchain-14.2.rel1-aarch64-arm-none-eabi.tar.xz"}},
-    {"id": "arm_none_eabi_gcc_extracted",                           "action": "extract",  "params": {"reference_id": "arm_none_eabi_gcc"}}
+    {"id": "arm_none_eabi_gcc_extracted",                           "action": "extract",  "params": {"reference_id": "arm_none_eabi_gcc"}},
+    {"id": "cmake"            , "architectures": ["WindowsX64"],    "action": "download", "params": {"url": "https://github.com/Kitware/CMake/releases/download/v4.0.3/cmake-4.0.3-windows-x86_64.zip"}},
+    {"id": "cmake"            , "architectures": ["LinuxX64"],      "action": "download", "params": {"url": "https://github.com/Kitware/CMake/releases/download/v4.0.3/cmake-4.0.3-linux-x86_64.tar.gz"}},
+    {"id": "cmake"            , "architectures": ["LinuxAArch64"],  "action": "download", "params": {"url": "https://github.com/Kitware/CMake/releases/download/v4.0.3/cmake-4.0.3-linux-aarch64.tar.gz"}},
+    {"id": "cmake_extracted"  ,                                     "action": "extract",  "params": {"reference_id": "cmake"}},
+    {"id": "ninja"            , "architectures": ["WindowsX64"],    "action": "download", "params": {"url": "https://github.com/ninja-build/ninja/releases/download/v1.13.1/ninja-win.zip"}},
+    {"id": "ninja"            , "architectures": ["LinuxX64"],      "action": "download", "params": {"url": "https://github.com/ninja-build/ninja/releases/download/v1.13.1/ninja-linux.zip"}},
+    {"id": "ninja"            , "architectures": ["LinuxAArch64"],  "action": "download", "params": {"url": "https://github.com/ninja-build/ninja/releases/download/v1.13.1/ninja-linux-aarch64.zip"}},
+    {"id": "ninja_extracted"  ,                                     "action": "extract",  "params": {"reference_id": "ninja"}}
   ]
 }
