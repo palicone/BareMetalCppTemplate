@@ -8,7 +8,7 @@ on:
 
 jobs:
   RPi:
-    name: Setup build environment on Raspberry Pi
+    name: Setup environment and build on Raspberry Pi
     runs-on: [self-hosted, RPi4Too, BareMetalCppTemplate]
 
     steps:
@@ -39,18 +39,34 @@ jobs:
       run: |
         echo "PATH=${{github.workspace}}/tools/cmake-4.0.3-linux-aarch64/bin:$PATH" >> $GITHUB_ENV
 
-    - name: Configure build environment
-      working-directory: ${{github.workspace}}
+    - name: Configure debug ARMv7M build
       run: |
         cmake --preset ARMv7M-fromLinux-debug -S repo/head
+
+    - name: Configure release ARMv7M build
+      run: |
         cmake --preset ARMv7M-fromLinux-release -S repo/head
+
+    - name: Configure debug RPiPico build
+      run: |
         cmake --preset RPiPico-fromLinux-debug -S repo/head
+
+    - name: Configure release RPiPico build
+      run: |
         cmake --preset RPiPico-fromLinux-release -S repo/head
 
-    - name: Build
-      working-directory: ${{github.workspace}}
+    - name: Build ARMv7M debug
       run: |
         cmake --build repo/head-bin-ARMv7M-fromLinux-debug --target Template
+
+    - name: Build ARMv7M release
+      run: |
         cmake --build repo/head-bin-ARMv7M-fromLinux-release --target Template
+
+    - name: Build RPiPico debug
+      run: |
         cmake --build repo/head-bin-RPiPico-fromLinux-debug --target hollow_pi
+
+    - name: Build RPiPico release
+      run: |
         cmake --build repo/head-bin-RPiPico-fromLinux-release --target hollow_pi

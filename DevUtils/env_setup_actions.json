@@ -10,10 +10,6 @@
     {"id": "cmake"            , "architectures": ["WindowsX64"],    "action": "download", "params": {"url": "https://github.com/Kitware/CMake/releases/download/v4.0.3/cmake-4.0.3-windows-x86_64.zip"}},
     {"id": "cmake"            , "architectures": ["LinuxX64"],      "action": "download", "params": {"url": "https://github.com/Kitware/CMake/releases/download/v4.0.3/cmake-4.0.3-linux-x86_64.tar.gz"}},
     {"id": "cmake"            , "architectures": ["LinuxAArch64"],  "action": "download", "params": {"url": "https://github.com/Kitware/CMake/releases/download/v4.0.3/cmake-4.0.3-linux-aarch64.tar.gz"}},
-    {"id": "cmake_extracted"  ,                                     "action": "extract",  "params": {"reference_id": "cmake"}},
-    {"id": "ninja"            , "architectures": ["WindowsX64"],    "action": "download", "params": {"url": "https://github.com/ninja-build/ninja/releases/download/v1.13.1/ninja-win.zip"}},
-    {"id": "ninja"            , "architectures": ["LinuxX64"],      "action": "download", "params": {"url": "https://github.com/ninja-build/ninja/releases/download/v1.13.1/ninja-linux.zip"}},
-    {"id": "ninja"            , "architectures": ["LinuxAArch64"],  "action": "download", "params": {"url": "https://github.com/ninja-build/ninja/releases/download/v1.13.1/ninja-linux-aarch64.zip"}},
-    {"id": "ninja_extracted"  ,                                     "action": "extract",  "params": {"reference_id": "ninja"}}
+    {"id": "cmake_extracted"  ,                                     "action": "extract",  "params": {"reference_id": "cmake"}}
   ]
 }

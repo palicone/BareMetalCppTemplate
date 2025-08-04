@@ -18,7 +18,6 @@
       },
       "cacheVariables":
       {
-        "CMAKE_MAKE_PROGRAM": "${sourceDir}/../../tools/ninja-linux-aarch64/ninja",
         "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/CMake/toolchain-gcc-armv7m.cmake"
       },
       "condition":
