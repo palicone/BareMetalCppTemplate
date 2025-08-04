@@ -35,3 +35,22 @@ jobs:
       run: |
         bash DevUtils/SetupDevEnv.sh /usr/bin/python
 
+    - name: Add to PATH for rest of job
+      run: |
+        echo "${{github.workspace}}/tools/cmake-4.0.3-linux-aarch64/bin:$PATH" >> $GITHUB_ENV
+
+    - name: Configure build environment
+      working-directory: ${{github.workspace}}
+      run: |
+        cmake --preset ARMv7M-fromLinux-debug -S repo/head
+        cmake --preset ARMv7M-fromLinux-release -S repo/head
+        cmake --preset RPiPico-fromLinux-debug -S repo/head
+        cmake --preset RPiPico-fromLinux-release -S repo/head
+
+    - name: Build
+      working-directory: ${{github.workspace}}
+      run: |
+        cmake --build repo/head-bin-ARMv7M-fromLinux-debug --target Template
+        cmake --build repo/head-bin-ARMv7M-fromLinux-release --target Template
+        cmake --build repo/head-bin-RPiPico-fromLinux-debug --target hollow_pi
+        cmake --build repo/head-bin-RPiPico-fromLinux-release --target hollow_pi

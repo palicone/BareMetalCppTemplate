@@ -10,7 +10,8 @@
       "generator": "Ninja",
       "cacheVariables":
       {
-        "CMAKE_CXX_STANDARD": "23"
+        "CMAKE_CXX_STANDARD": "23",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
       }
     }
   ]
