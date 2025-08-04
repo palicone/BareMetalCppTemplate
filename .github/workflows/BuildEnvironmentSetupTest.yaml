@@ -37,7 +37,7 @@ jobs:
 
     - name: Add to PATH for rest of job
       run: |
-        echo "${{github.workspace}}/tools/cmake-4.0.3-linux-aarch64/bin:$PATH" >> $GITHUB_ENV
+        echo "PATH=${{github.workspace}}/tools/cmake-4.0.3-linux-aarch64/bin:$PATH" >> $GITHUB_ENV
 
     - name: Configure build environment
       working-directory: ${{github.workspace}}
