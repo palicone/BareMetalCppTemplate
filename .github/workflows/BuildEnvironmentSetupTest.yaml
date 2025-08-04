@@ -39,33 +39,33 @@ jobs:
       run: |
         echo "PATH=${{github.workspace}}/tools/cmake-4.0.3-linux-aarch64/bin:$PATH" >> $GITHUB_ENV
 
-    - name: Configure debug ARMv7M build
+    - name: Configure ARMv7M debug
       run: |
         cmake --preset ARMv7M-fromLinux-debug -S repo/head
-
-    - name: Configure release ARMv7M build
-      run: |
-        cmake --preset ARMv7M-fromLinux-release -S repo/head
-
-    - name: Configure debug RPiPico build
-      run: |
-        cmake --preset RPiPico-fromLinux-debug -S repo/head
-
-    - name: Configure release RPiPico build
-      run: |
-        cmake --preset RPiPico-fromLinux-release -S repo/head
 
     - name: Build ARMv7M debug
       run: |
         cmake --build repo/head-bin-ARMv7M-fromLinux-debug --target Template
 
+    - name: Configure ARMv7M release
+      run: |
+        cmake --preset ARMv7M-fromLinux-release -S repo/head
+
     - name: Build ARMv7M release
       run: |
         cmake --build repo/head-bin-ARMv7M-fromLinux-release --target Template
 
+    - name: Configure RPiPico debug
+      run: |
+        cmake --preset RPiPico-fromLinux-debug -S repo/head
+
     - name: Build RPiPico debug
       run: |
         cmake --build repo/head-bin-RPiPico-fromLinux-debug --target hollow_pi
+
+    - name: Configure RPiPico release
+      run: |
+        cmake --preset RPiPico-fromLinux-release -S repo/head
 
     - name: Build RPiPico release
       run: |
