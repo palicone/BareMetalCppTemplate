@@ -11,10 +11,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(toolchain_bin_path ${ARMV7M_TOOLCHAIN_PATH}/bin)
 
-set(CMAKE_C_COMPILER ${toolchain_bin_path}/arm-none-eabi-gcc${EXECUTABLE_EXT_WITH_DOT} CACHE FILEPATH "ARM C compiler (GCC)")
-set(CMAKE_CXX_COMPILER ${toolchain_bin_path}/arm-none-eabi-g++${EXECUTABLE_EXT_WITH_DOT} CACHE FILEPATH "ARM C++ compiler (GCC)")
-set(CMAKE_ASM_COMPILER ${toolchain_bin_path}/arm-none-eabi-gcc${EXECUTABLE_EXT_WITH_DOT} CACHE INTERNAL "ARM Assembler (GCC)")
-set(CMAKE_SIZE ${toolchain_bin_path}/arm-none-eabi-size${EXECUTABLE_EXT_WITH_DOT} CACHE INTERNAL "Binutils size (GCC)")
+if(WIN32)
+    set(exe_extension .exe)
+endif()
+
+set(CMAKE_C_COMPILER ${toolchain_bin_path}/arm-none-eabi-gcc${exe_extension} CACHE FILEPATH "ARM C compiler (GCC)")
+set(CMAKE_CXX_COMPILER ${toolchain_bin_path}/arm-none-eabi-g++${exe_extension} CACHE FILEPATH "ARM C++ compiler (GCC)")
+set(CMAKE_ASM_COMPILER ${toolchain_bin_path}/arm-none-eabi-gcc${exe_extension} CACHE INTERNAL "ARM Assembler (GCC)")
+set(CMAKE_SIZE ${toolchain_bin_path}/arm-none-eabi-size${exe_extension} CACHE INTERNAL "Binutils size (GCC)")
 
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 

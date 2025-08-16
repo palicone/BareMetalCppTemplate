@@ -1,7 +1,7 @@
 # BareMetalCppTemplate
 Minimal C++ (deep) embedded project template with GCC and CMake
 
-# Setup
+# Development Setup
 ## Prerequisites
 - CMake
 - Pyhton

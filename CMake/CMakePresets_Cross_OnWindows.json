@@ -17,8 +17,7 @@
       },
       "cacheVariables":
       {
-        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/CMake/toolchain-gcc-armv7m.cmake",
-        "EXECUTABLE_EXT_WITH_DOT": ".exe"
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/CMake/toolchain-gcc-armv7m.cmake"
       },
       "condition":
       {
